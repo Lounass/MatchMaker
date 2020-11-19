@@ -5,10 +5,12 @@ namespace App\Entity;
 use App\Repository\MatchMakerRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiProperty;
+
 
 /**
  * @ORM\Entity(repositoryClass=MatchMakerRepository::class)
- * @ApiResource
+ * @ApiResource(iri="https://schema.org/SportsEvent")
  */
 class MatchMaker
 {
@@ -26,50 +28,17 @@ class MatchMaker
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $player1;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $player2;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $status;
+    private $status = self::STATUS_PENDING;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @ApiProperty(iri="https://schema.org/startDate")
      */
     private $encounterDate;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getPlayer1(): ?string
-    {
-        return $this->player1;
-    }
-
-    public function setPlayer1(string $player1): self
-    {
-        $this->player1 = $player1;
-
-        return $this;
-    }
-
-    public function getPlayer2(): ?string
-    {
-        return $this->player2;
-    }
-
-    public function setPlayer2(string $player2): self
-    {
-        $this->player2 = $player2;
-
-        return $this;
     }
 
     public function getStatus(): ?string
@@ -79,7 +48,7 @@ class MatchMaker
 
     public function setStatus(string $status): self
     {
-        $this->status = $status;
+        $this->status =$status ;
 
         return $this;
     }
@@ -126,7 +95,7 @@ class MatchMaker
     public function getWinner(): ?Player
     {
         if(null === ($this-> scorePlayerA ?? $this-> scorePlayerB ?? null)){
-            throw new \Exception('Missing result to get a winner');
+            return null;
         }
         $potentialWinners = [
             -1 => $this-> playerB,

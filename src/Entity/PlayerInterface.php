@@ -6,7 +6,7 @@ namespace App\Entity;
 
 interface PlayerInterface {
     public function updateRatioAgainst(PlayerInterface $player, $result): void;
-    public function getlevel(): float;
+    public function getLevel(): float;
 }
 
 

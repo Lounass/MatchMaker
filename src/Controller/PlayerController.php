@@ -15,12 +15,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/player")
- * @Security("is_granted('ROLE_ADMIN')")
+ * 
  */
 class PlayerController extends AbstractController
 {
     /**
      * @Route("/", name="player_index", methods={"GET"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function index(PlayerRepository $playerRepository): Response
     {
@@ -55,6 +56,7 @@ class PlayerController extends AbstractController
 
     /**
      * @Route("/{id}", name="player_show", methods={"GET"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function show(Player $player): Response
     {
@@ -65,6 +67,7 @@ class PlayerController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="player_edit", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function edit(Request $request, Player $player): Response
     {
@@ -85,6 +88,7 @@ class PlayerController extends AbstractController
 
     /**
      * @Route("/{id}", name="player_delete", methods={"DELETE"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function delete(Request $request, Player $player): Response
     {

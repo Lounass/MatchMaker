@@ -12,7 +12,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * @ORM\Entity(repositoryClass=PlayerRepository::class)
  * @ApiResource
  */
-class Player implements UserInterface
+class Player implements UserInterface, PlayerInterface
 {
 
     private float $ratio = 1200.0;
@@ -131,7 +131,7 @@ class Player implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getLevel(): ?float
+    public function getLevel(): float
     {
         return $this->level;
     }
