@@ -20,12 +20,6 @@ class HomeController extends AbstractController
         $playerA = new Player();
         $playerA->setUsername("Bobby");
 
-        
-
-
-  
-
-
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController'
 
