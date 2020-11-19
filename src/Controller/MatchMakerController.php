@@ -98,19 +98,7 @@ class MatchMakerController extends AbstractController
         return $this->redirectToRoute('match_maker_index');
     }
 
-    /**
-    * @Route("/match/resolve")
-    */
-    public function resolve(MatchMaker $matchMaker):Response
-    {
-        //$scorePlayer1 = $matchMaker-> getScorePlayer1()
-        //$scorePlayer2 = $matchMaker-> getScorePlayer2()
 
-        $probaPlayer1 = calcProbP1vsP2($matchMaker-> getPlayer1(), $matchMaker-> getPlayer2());
-
-
-        
-    }
 
 
 }

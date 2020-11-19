@@ -96,14 +96,21 @@ class MatchMaker
         return $this;
     }
 
-    public PlayerInterface $playerA;
-    public PlayerInterface $playerB;
 
+    public ?PlayerInterface $playerA;
+    public ?PlayerInterface $playerB;
+
+    /**
+     * @ORM\Column(type="float")
+     */
     public ?float $scorePlayerA = null;
+    /**
+     * @ORM\Column(type="float")
+     */
     public ?float $scorePlayerB = null;
 
 
-    public function __construct(PlayerInterface $playerA, PlayerInterface $playerB )
+    public function __construct(PlayerInterface $playerA = null, PlayerInterface $playerB = null )
     {
         $this->playerA = $playerA;
         $this->playerB = $playerB;
