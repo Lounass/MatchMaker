@@ -96,16 +96,22 @@ class MatchMaker
         return $this;
     }
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="Player")
+     */
     public ?PlayerInterface $playerA;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Player")
+     */
     public ?PlayerInterface $playerB;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     public ?float $scorePlayerA = null;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float",  nullable=true)
      */
     public ?float $scorePlayerB = null;
 
